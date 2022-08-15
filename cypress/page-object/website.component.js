@@ -135,7 +135,7 @@ export default class midtransPage {
 	static ValidatePaymentSuccess() {
 		cy.frameLoaded('#snap-midtrans')
 		cy.iframe().contains('Your transaction is being processed')
-		cy.iframe().contains('Back to').click()
+		cy.iframe().contains("Back to merchant's web").click()
 		cy.wait(1000)
 		cy.contains('Thank you for your purchase.')
 		cy.contains('Get a nice sleep.')
