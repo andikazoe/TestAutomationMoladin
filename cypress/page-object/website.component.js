@@ -1,3 +1,6 @@
+require('cypress-xpath')
+require('cypress-iframe')
+
 export default class midtransPage {
 	static buttonBuyNow() {
 		cy.xpath("//a[@class='btn buy']").click()
@@ -117,6 +120,25 @@ export default class midtransPage {
 		cy.get('#snap-midtrans')
 		.its('0.contentDocument.body');
 		cy.contains('Make sure your card number are correct.')
+	}
+
+	static btnOk() {
+		cy.frameLoaded('#snap-midtrans')
+		cy.iframe()
+		.find('#app')
+		.find('.iframe-3ds')
+		.its('0.contentDocument.body')
+		.contains('OK')
+		.click()
+	}
+
+	static ValidatePaymentSuccess() {
+		cy.frameLoaded('#snap-midtrans')
+		cy.iframe().contains('Your transaction is being processed')
+		cy.iframe().contains('Back to').click()
+		cy.wait(1000)
+		cy.contains('Thank you for your purchase.')
+		cy.contains('Get a nice sleep.')
 	}
 
 

@@ -35,7 +35,9 @@ describe('Automation Web Demo Midtrans', () => {
 		midtransPage.inputCVV(CVV)
 		midtransPage.buttonPayNow()
 
-		//midtransPage.inputPasscode(Passcode)
+		midtransPage.inputPasscode(Passcode)
+		midtransPage.btnOk()
+		midtransPage.ValidatePaymentSuccess()
 	})
 	//*/
 
